@@ -140,6 +140,10 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
         }
     }
 
+    fun reStart(){
+        Aria.download(this).load(mTaskId).reStart()
+    }
+
     fun stop() {
         Aria.download(this).load(mTaskId).stop()
     }

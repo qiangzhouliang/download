@@ -37,6 +37,7 @@ class QDownloadAnyModule(context: Context,view: View? = null) {
     var onCancle: QDownloadIntfCancle? = null
     var onFail: QDownloadIntfFail? = null
     var onComplate: QDownloadIntfComplate? = null
+    var vodTsUrlConverter: VodTsUrlConverter? = null
 
     @Download.onWait
     fun onWait(task: DownloadTask) {
@@ -104,7 +105,10 @@ class QDownloadAnyModule(context: Context,view: View? = null) {
         mUrl = url
         // 创建m3u8直播文件配置
         val option = M3U8VodOption()
-        option.setVodTsUrlConvert(VodTsUrlConverter())
+        if (vodTsUrlConverter == null){
+            vodTsUrlConverter = VodTsUrlConverter();
+        }
+        option.setVodTsUrlConvert(vodTsUrlConverter)
         //忽略下载失败的ts切片，即使有失败的切片，下载完成后也要合并所有切片，并进入complete回调
         option.ignoreFailureTs()
         mTaskId = Aria.download(this) // 设置点播文件下载地址
@@ -115,7 +119,7 @@ class QDownloadAnyModule(context: Context,view: View? = null) {
     }
 
     //点播地址转换
-    private class VodTsUrlConverter : IVodTsUrlConverter {
+    class VodTsUrlConverter : IVodTsUrlConverter {
         override fun convert(m3u8Url: String, tsUrls: List<String>): List<String> {
             // 转换ts文件的url地址
 //            Uri uri = Uri.parse(m3u8Url);

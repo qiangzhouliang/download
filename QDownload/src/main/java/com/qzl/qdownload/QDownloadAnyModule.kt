@@ -1,7 +1,6 @@
 package com.qzl.qdownload
 
 import android.content.Context
-import android.util.Log
 import android.view.View
 import com.arialyy.annotations.Download
 import com.arialyy.aria.core.Aria
@@ -10,9 +9,7 @@ import com.arialyy.aria.core.download.target.HttpBuilderTarget
 import com.arialyy.aria.core.processor.ILiveTsUrlConverter
 import com.arialyy.aria.core.processor.IVodTsUrlConverter
 import com.arialyy.aria.core.task.DownloadTask
-import com.arialyy.aria.util.CommonUtil
 import com.qzl.qdownload.intf.*
-import java.io.File
 import java.util.*
 
 /**
@@ -23,7 +20,7 @@ import java.util.*
  * @class AnyRunnModule
  * @package com.zdww.smartvideo.main.videoback.m3u8
  */
-class QDownloadAnyModule(context: Context,view: View? = null) {
+class QDownloadAnyModule(context: Context, view: View? = null) {
     private val mContext: Context
     private val mView:View?
     private var mUrl: String? = null
@@ -37,21 +34,21 @@ class QDownloadAnyModule(context: Context,view: View? = null) {
     var onCancle: QDownloadIntfCancle? = null
     var onFail: QDownloadIntfFail? = null
     var onComplate: QDownloadIntfComplate? = null
-    var vodTsUrlConverter: VodTsUrlConverter? = null
+    var vodTsUrlConverter: IVodTsUrlConverter? = null
 
     @Download.onWait
     fun onWait(task: DownloadTask) {
-        onWait?.onWait(task,mView);
+        onWait?.onWait(task, mView);
     }
 
     @Download.onPre
     fun onPre(task: DownloadTask?) {
-        onPre?.onPre(task,mView)
+        onPre?.onPre(task, mView)
     }
 
     @Download.onTaskStart
     fun taskStart(task: DownloadTask?) {
-        onStart?.onStart(task,mView)
+        onStart?.onStart(task, mView)
     }
 
     @Download.onTaskRunning
@@ -59,32 +56,32 @@ class QDownloadAnyModule(context: Context,view: View? = null) {
         val p = task.percent //任务进度百分比
         val speed = task.convertSpeed //转换单位后的下载速度，单位转换需要在配置文件中打开
         val speed1 = task.speed //原始byte长度速度
-        onRunning?.onRunning(task,mView)
+        onRunning?.onRunning(task, mView)
     }
 
     @Download.onTaskResume
     fun taskResume(task: DownloadTask?) {
-        onResume?.onResume(task,mView)
+        onResume?.onResume(task, mView)
     }
 
     @Download.onTaskStop
     fun taskStop(task: DownloadTask?) {
-        onStop?.onStop(task,mView)
+        onStop?.onStop(task, mView)
     }
 
     @Download.onTaskCancel
     fun taskCancel(task: DownloadTask?) {
-        onCancle?.onCancle(task,mView)
+        onCancle?.onCancle(task, mView)
     }
 
     @Download.onTaskFail
     fun taskFail(task: DownloadTask?) {
-        onFail?.onFail(task,mView)
+        onFail?.onFail(task, mView)
     }
 
     @Download.onTaskComplete
     fun taskComplete(task: DownloadTask) {
-        onComplate?.onComplate(task,mView)
+        onComplate?.onComplate(task, mView)
     }
 
     /**

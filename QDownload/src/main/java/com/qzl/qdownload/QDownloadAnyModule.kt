@@ -22,8 +22,8 @@ import java.util.*
  */
 class QDownloadAnyModule(context: Context, view: View? = null) {
     private val mContext: Context
-    private val mView:View?
-    private var mUrl: String? = null
+    val mView:View?
+    var mUrl: String? = null
     private var mTaskId: Long = -1
     var onWait:QDownloadIntfWait? = null
     var onPre: QDownloadIntfPre? = null

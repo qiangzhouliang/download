@@ -25,6 +25,9 @@
         <activity android:name=".MainActivity">
 
         </activity>
+
+        <service android:name=".DownloadService" />
+        <service android:name=".TestTwoService" />
     </application>
 
 </manifest>

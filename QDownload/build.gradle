@@ -43,7 +43,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    api 'com.arialyy.aria:core:3.8.5'
-    kapt 'com.arialyy.aria:compiler:3.8.5'
-    api 'com.arialyy.aria:m3u8Component:3.8.5'
+    api 'com.arialyy.aria:core:3.8.12'
+    kapt 'com.arialyy.aria:compiler:3.8.12'
+    api 'com.arialyy.aria:m3u8Component:3.8.12'
 }

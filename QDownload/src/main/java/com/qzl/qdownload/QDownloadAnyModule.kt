@@ -24,7 +24,7 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
     private val mContext: Context
     val mView:View?
     var mUrl: String? = null
-    private var mTaskId: Long = -1
+    var mTaskId: Long = -1
     var onWait:QDownloadIntfWait? = null
     var onPre: QDownloadIntfPre? = null
     var onStart: QDownloadIntfStart? = null
@@ -38,7 +38,7 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
 
     @Download.onWait
     fun onWait(task: DownloadTask) {
-        onWait?.onWait(task, mView);
+        onWait?.onWait(task, mView)
     }
 
     @Download.onPre
@@ -113,6 +113,20 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
             .setFilePath(FilePath, true) // 设置点播文件保存路径
             .m3u8VodOption(option) // 调整下载模式为m3u8点播
             .create()
+    }
+
+    /**
+     * @desc 使用现有的进程下载
+     * @author QZL
+     * @time 2021/3/13 17:12
+     */
+    fun startOther(url: String?, FilePath: String?): Long {
+        mUrl = url
+        mTaskId = Aria.download(this) // 设置点播文件下载地址
+                .load(mUrl)
+                .setFilePath(FilePath, true) // 设置点播文件保存路径
+                .create()
+        return mTaskId
     }
 
     //点播地址转换

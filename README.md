@@ -1,6 +1,6 @@
 # download
 一行代码实现文件下载，支持正常格式文件下载，也支持m3u8格式文件下载
-使用地址：https://jitpack.io/#qiangzhouliang/download/1.0.0
+使用地址：https://jitpack.io/#qiangzhouliang/download
 Aria使用文档：https://aria.laoyuyu.me/aria_doc/download/m3u8_vod.html
 # 1 如何引入自己的项目
 ## 1.1 将JitPack存储库添加到您的构建文件中

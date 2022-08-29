@@ -43,8 +43,8 @@ public class TestTwoService extends Service {
         super.onCreate();
         QDownloadAnyModule anyRunnModule = new QDownloadAnyModule(this,new TextView(this));
 //        anyRunnModule.start("http://hcjs2ra2rytd8v8np1q.exp.bcevod.com/mda-hegtjx8n5e8jt9zv/mda-hegtjx8n5e8jt9zv.m3u8", FileUtils.getPath("download").toString() + "/test.mp4");
-//        anyRunnModule.start("http://10.18.104.201:8082/m3u8/e97d6fb3f1b3573bbc7ffc8cc4584ec0.m3u8", FileUtils.getPath("download").toString() + "/test.mp4");
-        anyRunnModule.startOther("http://10.18.104.201:8050/vod/62010201001320002599_62010201001320002599_0_1102010003.flv", FileUtils.getPath("download").toString() + "/test.mp4");
+        anyRunnModule.start("http://10.18.104.201:8082/m3u8/e97d6fb3f1b3573bbc7ffc8cc4584ec0.m3u8", FileUtils.getPath("download").toString() + "/test.mp4");
+//        anyRunnModule.startOther("http://10.18.104.201:8050/vod/62010201001320002599_62010201001320002599_0_1102010003.flv", FileUtils.getPath("download").toString() + "/test.mp4");
         anyRunnModule.setOnStart(new QDownloadIntfStart() {
             @Override
             public void onStart(@androidx.annotation.Nullable DownloadTask task, @androidx.annotation.Nullable View view) {

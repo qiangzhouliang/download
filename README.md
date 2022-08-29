@@ -14,7 +14,7 @@ allprojects {
 	}
 ~~~
 ## 1.2 添加依赖项
-lastestVersion = [![](https://jitpack.io/v/qiangzhouliang/QaPicker.svg)](https://jitpack.io/#qiangzhouliang/download)
+lastestVersion = [![](https://jitpack.io/v/qiangzhouliang/download.svg)](https://jitpack.io/#qiangzhouliang/download)
 ~~~
 dependencies {
 	  implementation 'com.github.qiangzhouliang:download:$lastestVersion'

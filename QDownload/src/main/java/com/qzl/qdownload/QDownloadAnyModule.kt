@@ -1,6 +1,7 @@
 package com.qzl.qdownload
 
 import android.content.Context
+import android.net.Uri
 import android.view.View
 import com.arialyy.annotations.Download
 import com.arialyy.aria.core.Aria
@@ -105,6 +106,7 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
         if (vodTsUrlConverter == null){
             vodTsUrlConverter = VodTsUrlConverter();
         }
+        // 不使用默认的url转换
         option.setVodTsUrlConvert(vodTsUrlConverter)
         //忽略下载失败的ts切片，即使有失败的切片，下载完成后也要合并所有切片，并进入complete回调
         option.ignoreFailureTs()
@@ -135,11 +137,25 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
             // 转换ts文件的url地址
 //            Uri uri = Uri.parse(m3u8Url);
 //            String parentUrl = "http://" + uri.getHost();
-            val index = m3u8Url.lastIndexOf("/")
-            val parentUrl = m3u8Url.substring(0, index + 1)
+//            val index = m3u8Url.lastIndexOf("/")
+//            val parentUrl = m3u8Url.substring(0, index + 1)
+//            val newUrls: MutableList<String> = ArrayList()
+//            for (url in tsUrls) {
+//                newUrls.add(parentUrl + url)
+//            }
+//            return newUrls // 返回有效的ts文件url集合
+
+            // 转换ts文件的url地址
+            val uri = Uri.parse(m3u8Url)
+            //val parentUrl = "http://" + uri.host + ":8082/"
+            val parentUrl = m3u8Url.substring(0,m3u8Url.indexOf(uri.path!!)+1)
             val newUrls: MutableList<String> = ArrayList()
             for (url in tsUrls) {
-                newUrls.add(parentUrl + url)
+                if (!url.startsWith("http://") || !url.startsWith("https://")) {
+                    newUrls.add((parentUrl + url).replace("//", "/"))
+                } else {
+                    newUrls.add(url)
+                }
             }
             return newUrls // 返回有效的ts文件url集合
         }

@@ -96,7 +96,6 @@ val anyRunnModule = QDownloadAnyModule(this)
 ### 3.3 1.0.2
 设置点播文件自定义
 ### 3.4 1.0.7
-升级aria插件：3.8.5 -》3.8.12
 添加正常文件下载：startOther()
 
 

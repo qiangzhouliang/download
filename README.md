@@ -95,7 +95,7 @@ val anyRunnModule = QDownloadAnyModule(this)
 新增了全局配置
 ### 3.3 1.0.2
 设置点播文件自定义
-### 3.4 1.0.7
+### 3.4 1.0.8
 添加正常文件下载：startOther()
 
 

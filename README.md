@@ -97,6 +97,24 @@ val anyRunnModule = QDownloadAnyModule(this)
 设置点播文件自定义
 ### 3.4 1.0.8
 添加正常文件下载：startOther()
+### 3.5 1.0.9
+1. 将
+```
+implementation 'com.arialyy.aria:core:3.8.5'
+annotationProcessor 'com.arialyy.aria:compiler:3.8.5'
+implementation 'com.arialyy.aria:ftpComponent:3.8.5' # 如果需要使用ftp，请增加该组件
+implementation 'com.arialyy.aria:sftpComponent:3.8.5' # 如果需要使用sftp，请增加该组件
+implementation 'com.arialyy.aria:m3u8Component:3.8.5' # 如果需要使用m3u8下载功能，请增加该组件
+```
+升级为
+```
+implementation 'me.laoyuyu.aria:core:3.8.16'
+annotationProcessor 'me.laoyuyu.aria:compiler:3.8.16'
+implementation 'me.laoyuyu.aria:ftp:3.8.16' # 如果需要使用ftp，请增加该组件
+implementation 'me.laoyuyu.aria:sftp:3.8.16' # 如果需要使用ftp，请增加该组件
+implementation 'me.laoyuyu.aria:m3u8:3.8.16' # 如果需要使用m3u8下载功能，请增加该组件
+```
+2. 
 
 
 

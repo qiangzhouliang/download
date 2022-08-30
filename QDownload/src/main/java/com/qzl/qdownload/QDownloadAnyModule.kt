@@ -57,6 +57,7 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
         val p = task.percent //任务进度百分比
         val speed = task.convertSpeed //转换单位后的下载速度，单位转换需要在配置文件中打开
         val speed1 = task.speed //原始byte长度速度
+        println(speed+ "========="+ speed1)
         onRunning?.onRunning(task, mView)
     }
 

@@ -41,6 +41,7 @@ public class TestTwoService extends Service {
     public void onCreate() {
         Log.i("Kathy","TestTwoService - onCreate - Thread = " + Thread.currentThread().getName());
         super.onCreate();
+        Aria.get(this).getDownloadConfig().setConvertSpeed(true);
         QDownloadAnyModule anyRunnModule = new QDownloadAnyModule(this,new TextView(this));
 //        anyRunnModule.start("http://hcjs2ra2rytd8v8np1q.exp.bcevod.com/mda-hegtjx8n5e8jt9zv/mda-hegtjx8n5e8jt9zv.m3u8", FileUtils.getPath("download").toString() + "/test.mp4");
         anyRunnModule.start("http://10.18.104.201:8082/m3u8/e97d6fb3f1b3573bbc7ffc8cc4584ec0.m3u8", FileUtils.getPath("download").toString() + "/test.mp4");

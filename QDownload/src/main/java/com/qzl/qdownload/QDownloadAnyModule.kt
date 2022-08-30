@@ -98,12 +98,13 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
      * @desc 使用现有的进程下载
      * @author QZL
      * @time 2021/3/13 17:12
+     * @param url：下载地址
+     * @param FilePath：文件存储路径
      */
     fun start(url: String?, FilePath: String?) {
         mUrl = url
         // 创建m3u8直播文件配置
         val option = M3U8VodOption()
-        option.setUseDefConvert(false)
         if (vodTsUrlConverter == null){
             vodTsUrlConverter = VodTsUrlConverter();
         }
@@ -111,9 +112,25 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
         option.setVodTsUrlConvert(vodTsUrlConverter)
         //忽略下载失败的ts切片，即使有失败的切片，下载完成后也要合并所有切片，并进入complete回调
         option.ignoreFailureTs()
+        startM3u8(url, FilePath, option,true)
+    }
+
+    /**
+     *使用现有的进程下载 m3u8 支持option自定义
+     * @author QZL
+     * @time 2021/3/13 17:12
+     * @param url：下载地址
+     * @param FilePath：文件存储路径
+     * @param option：m3u8下载配置
+     * @param isUseDefConvert：是否使用默认 m3u8地址解析器
+     */
+    fun startM3u8(url: String?, FilePath: String?,option: M3U8VodOption, isUseDefConvert: Boolean = false) {
+        mUrl = url
+        option.setUseDefConvert(isUseDefConvert)
         mTaskId = Aria.download(this) // 设置点播文件下载地址
             .load(mUrl)
-            .setFilePath(FilePath, true) // 设置点播文件保存路径
+            .ignoreFilePathOccupy() // 忽略文件占用，不管文件路径是否被其它任务占用，都执行上传\下载任务 需要注意的是：如果文件被其它任务占用，并且还调用了该方法，将自动删除占用了该文件路径的任务
+            .setFilePath(FilePath) // 设置点播文件保存路径
             .m3u8VodOption(option) // 调整下载模式为m3u8点播
             .create()
     }
@@ -126,9 +143,10 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
     fun startOther(url: String?, FilePath: String?): Long {
         mUrl = url
         mTaskId = Aria.download(this) // 设置点播文件下载地址
-                .load(mUrl)
-                .setFilePath(FilePath, true) // 设置点播文件保存路径
-                .create()
+            .load(mUrl)
+            .ignoreFilePathOccupy() // 忽略文件占用，不管文件路径是否被其它任务占用，都执行上传\下载任务 需要注意的是：如果文件被其它任务占用，并且还调用了该方法，将自动删除占用了该文件路径的任务
+            .setFilePath(FilePath) // 设置点播文件保存路径
+            .create()
         return mTaskId
     }
 

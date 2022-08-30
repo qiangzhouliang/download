@@ -114,7 +114,22 @@ implementation 'me.laoyuyu.aria:ftp:3.8.16' # 如果需要使用ftp，请增加�
 implementation 'me.laoyuyu.aria:sftp:3.8.16' # 如果需要使用ftp，请增加该组件
 implementation 'me.laoyuyu.aria:m3u8:3.8.16' # 如果需要使用m3u8下载功能，请增加该组件
 ```
-2. 
+### 3.6 1.1.0版本
+新增 srartM3U8可配置下载方法
+```kotlin
+/**
+     *使用现有的进程下载 m3u8 支持option自定义
+     * @author QZL
+     * @time 2021/3/13 17:12
+     * @param url：下载地址
+     * @param FilePath：文件存储路径
+     * @param option：m3u8下载配置
+     * @param isUseDefConvert：是否使用默认 m3u8地址解析器
+     */
+    fun startM3u8(url: String?, FilePath: String?,option: M3U8VodOption, isUseDefConvert: Boolean = false) {
+        
+    }
+```
 
 
 

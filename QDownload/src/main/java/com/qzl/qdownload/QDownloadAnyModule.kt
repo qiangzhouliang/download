@@ -112,7 +112,7 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
         option.setVodTsUrlConvert(vodTsUrlConverter)
         //忽略下载失败的ts切片，即使有失败的切片，下载完成后也要合并所有切片，并进入complete回调
         option.ignoreFailureTs()
-        startM3u8(url, FilePath, option,true)
+        startM3u8(url, FilePath, option)
     }
 
     /**

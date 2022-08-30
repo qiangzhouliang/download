@@ -114,7 +114,7 @@ implementation 'me.laoyuyu.aria:ftp:3.8.16' # 如果需要使用ftp，请增加�
 implementation 'me.laoyuyu.aria:sftp:3.8.16' # 如果需要使用ftp，请增加该组件
 implementation 'me.laoyuyu.aria:m3u8:3.8.16' # 如果需要使用m3u8下载功能，请增加该组件
 ```
-### 3.6 1.1.0版本
+### 3.6 1.1.1版本
 新增 srartM3U8可配置下载方法
 ```kotlin
 /**

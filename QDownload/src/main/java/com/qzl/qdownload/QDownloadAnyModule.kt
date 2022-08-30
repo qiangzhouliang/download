@@ -103,6 +103,7 @@ class QDownloadAnyModule(context: Context, view: View? = null) {
         mUrl = url
         // 创建m3u8直播文件配置
         val option = M3U8VodOption()
+        option.setUseDefConvert(false)
         if (vodTsUrlConverter == null){
             vodTsUrlConverter = VodTsUrlConverter();
         }
